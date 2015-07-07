@@ -19,7 +19,7 @@
     
 #include "hngvehicle.h"
 
-DWORD GET_VEHICLE_HASH(std::string model_name)
+DWORD GET_VEHICLE_HASH(std::string model_name) //for debugging
 {
 	for (int i = 0; i < 327; i++)
 		if (vehicle_array[i][0].compare(model_name) == 0)
