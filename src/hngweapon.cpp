@@ -20,22 +20,23 @@
     
 #include "hngweapon.h"
 
-DWORD GET_WEAPON_HASH(std::string name) //for debugging
+DWORD GET_WEAPON_HASH(std::string name)
 {
 	for (int i = 0; i < 62; i++)
-		if (weapon_array[i][0].compare(name) == 0)
-			return std::stol(weapon_array[i][0]);
+		if (weapon_array[i].compare(name) == 0)
+			return weapon_hashes[i];
 	return -1;
 }
 
-void GET_WEAPON_NAME(std::string Hash, std::string& name)
+void GET_WEAPON_NAME(DWORD Hash, std::string& name)
 {
 	for (int i = 0; i < 62; i++)
 	{
-		if (weapon_array[i][1].compare(Hash) == 0)
+		if (Hash == weapon_hashes[i])
 		{
-			name = weapon_array[i][0];
-			break;
+			name = weapon_array[i];
+			return;
 		}
 	}
+	name = "";
 }
