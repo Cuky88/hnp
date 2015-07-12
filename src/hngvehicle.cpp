@@ -19,22 +19,23 @@
     
 #include "hngvehicle.h"
 
-DWORD GET_VEHICLE_HASH(std::string model_name) //for debugging
+DWORD GET_VEHICLE_HASH(std::string model_name)
 {
-	for (int i = 0; i < 327; i++)
-		if (vehicle_array[i][0].compare(model_name) == 0)
-			return std::stol(vehicle_array[i][1]);
+	for (int i = 0; i < 323; i++)
+		if (vehicle_array[i].compare(model_name) == 0)
+			return vehicle_hashes[i];
 	return -1;
 }
 
-void GET_VEHICLE_NAME(std::string Hash, std::string& name)
+void GET_VEHICLE_NAME(DWORD Hash, std::string& name)
 {
-	for (int i = 0; i < 327; i++)
+	for (int i = 0; i < 323; i++)
 	{
-		if (vehicle_array[i][1].compare(Hash) == 0)
+		if (vehicle_hashes[i] == Hash)
 		{
-			name = vehicle_array[i][0];
-			break;
+			name = vehicle_array[i];
+			return;
 		}
 	}
+	name = "";
 }
