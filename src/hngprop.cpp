@@ -16,22 +16,23 @@
     
 #include "hngprop.h"
 
-DWORD GET_PROP_HASH(std::string name) //for debugging
+DWORD GET_PROP_HASH(std::string name)
 {
-	for (int i = 0; i < 3300; i++)
-		if (prop_array[i][0].compare(name) == 0)
-			return std::stol(prop_array[i][0]);
+	for (int i = 0; i < 3284; i++)
+		if (prop_array[i].compare(name) == 0)
+			return prop_hashes[i];
 	return -1;
 }
 
-void GET_PROP_NAME(std::string Hash, std::string& name)
+void GET_PROP_NAME(DWORD Hash, std::string& name)
 {
-	for (int i = 0; i < 3300; i++)
+	for (int i = 0; i < 3284; i++)
 	{
-		if (prop_array[i][1].compare(Hash) == 0)
+		if (prop_hashes[i] == Hash)
 		{
-			name = prop_array[i][0];
-			break;
+			name = prop_array[i];
+			return;
 		}
 	}
+	name = "";
 }
