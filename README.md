@@ -1,5 +1,5 @@
-# hng
-hash name generator, provides fast and efficient result
+# hnp
+hash name provider, provides fast and efficient result
 
 
 ##example
